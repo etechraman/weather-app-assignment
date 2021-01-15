@@ -13,7 +13,11 @@
         </div>
       </span>
     </header>
-    <nav class="w3-sidenav w3-white w3-card-2" style="display:none">
+    <nav
+      ref="sidenav"
+      class="w3-sidenav w3-white w3-card-2"
+      style="display:none"
+    >
       <a @click="dataAnalysis()">Data Analysis</a>
       <a @click="todaysWeather()">Today's Weather</a>
     </nav>
@@ -41,19 +45,11 @@ export default {
   },
   methods: {
     onClickOutside() {
-      if (
-        document.getElementsByClassName("w3-sidenav")[0].style.display ===
-        "block"
-      )
-        this.closeMenu();
+      if (this.$refs.sidenav.style.display === "block") this.closeMenu();
       else return;
     },
     handleMenuClick() {
-      if (
-        document.getElementsByClassName("w3-sidenav")[0].style.display ===
-        "none"
-      )
-        this.openMenu();
+      if (this.$refs.sidenav.style.display === "none") this.openMenu();
       else {
         this.closeMenu();
       }
@@ -62,14 +58,14 @@ export default {
       document
         .getElementsByClassName("menuContainer")[0]
         .classList.toggle("change");
-      document.getElementsByClassName("w3-sidenav")[0].style.display = "block";
+      this.$refs.sidenav.style.display = "block";
       document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
     },
     closeMenu() {
       document
         .getElementsByClassName("menuContainer")[0]
         .classList.toggle("change");
-      document.getElementsByClassName("w3-sidenav")[0].style.display = "none";
+      this.$refs.sidenav.style.display = "none";
       document.body.style.backgroundColor = "white";
     },
     dataAnalysis() {

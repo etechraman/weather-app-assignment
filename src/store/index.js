@@ -6,7 +6,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    apiKey: "3691d66951ed377111fab25a6f4945d3",
+    apiKey: process.env.VUE_APP_API_KEY,
     weatherData: {
       data: {
         weather: [
